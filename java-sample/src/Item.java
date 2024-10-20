@@ -1,53 +1,33 @@
-public class Item {
-    //atribut milik dari object Item.
+ class Item {
     private double itemPrice;
     private String itemName;
     private String itemCode;
-    private int itemStock;
+    private int itemQty;
 
-    //Default constructor 
-    public Item(){}
-
-    public Item(String name, String code){
-        this.itemName = name;
-        this.itemCode = code;
-    }
-
-    public Item(double price, String code, String name){
-
-    }
-
-    public Item(String name, double price, String code){
-
-    }
-
-    //Konstruktor: dijalankan saat proses instansiasi. 
-    public Item(String code, String name, double price) {
+    public Item(String code, String name, double price, int qty) {
         this.itemCode = code;
         this.itemName = name;
         this.itemPrice = price;
+        this.itemQty = qty;
     }
 
-    public int updateStock(int stockUpdate){
-        this.itemStock += stockUpdate;
-        return itemStock;
+    public double getSubTotal() {
+        return itemPrice * itemQty;
     }
 
     public double getPrice() {
         return itemPrice;
     }
 
-    public String getCode(){
+    public String getCode() {
         return itemCode;
     }
 
-    public String getName(){
+    public String getName() {
         return itemName;
     }
 
-    public int getStock(){
-        return itemStock;
+    public int getQty() {
+        return itemQty;
     }
-
-    
 }
