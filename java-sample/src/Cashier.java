@@ -30,4 +30,21 @@ public class Cashier {
         }
         System.out.println("Total belanja: " + total);
     }
+     public void processPayment(int payment) {
+        int total = items.stream().mapToInt(Item::getSubTotal).sum();
+        int change = payment - total;.
+        System.out.println("Total bayar: " + total);
+        System.out.println("Dibayar: " + payment);
+
+        if (payment < total) {
+            int shortage = total - payment;
+            System.out.println("Kekurangan bayar: " + shortage);
+        } else {.
+            System.out.println("Kembalian: " + change);
+        }
+    }
+
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
 }
