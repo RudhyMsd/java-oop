@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cashier {
     private ArrayList<Item> items;
@@ -7,8 +8,8 @@ public class Cashier {
         items = new ArrayList<>();
     }
 
-    public void addItem(double p, String c, String n) {
-        items.add(new Item(c, n, p));
+    public void addItem(double p, String c, String n, int qty) {
+        items.add(new Item(c, n, p, qty));
         System.out.println("Barang ditambahkan.");
     }
 
@@ -24,10 +25,16 @@ public class Cashier {
     }
 
     public void displayTotal() {
+        System.out.println("------------------------------------------------");
+        System.out.printf("%-10s %-20s %-10s %-10s %-10s\n", "Kode", "Nama Barang", "Harga", "Jumlah", "SubTotal");
+        System.out.println("------------------------------------------------");
         double total = 0.0;
         for (Item item : items) {
-            total += item.getPrice();
+            int subTotal = item.getSubTotal();
+            total += subTotal();
+            System.out.printf("%-10s %-20s %-10d %-10d %-10d\n",
+            item.getCode(), item.getName(), item.getPrice(), item.getQty(), subTotal);
         }
-        System.out.println("Total belanja: " + total);
+        System.out.println("%-40s %-10d\n", "Total Belanja:", total);
     }
 }
