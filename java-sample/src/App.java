@@ -21,15 +21,29 @@ public class App {
                     String addName = scanner.next();
                     System.out.print("Masukkan harga barang: ");
                     double addPrice = scanner.nextDouble();
-                    cashier.addItem(addPrice, addCode, addName);
+                    System.out.print("Masukkan jumlah barang: ");
+                    double addQty = scanner.nextInt();
+                    cashier.addItem(addPrice, addCode, addName, addQty);
                     break;
                 case 2:
-                    System.out.print("Masukkan kode barang yang akan dihapus: ");
-                    String removeCode = scanner.next();
-                    cashier.removeItem(removeCode);
+                    if (cashier.isEmpty()) {
+                        System.out.println("Daftar barang kosong. Tambahkan barang terlebih dahulu.");
+                    }else {
+                        System.out.print("Masukkan kode barang yang akan dihapus: ");
+                        String removeCode = scanner.next(); 
+                        cashier.removeItem(removeCode);
+                    }
                     break;
                 case 3:
-                    cashier.displayTotal();
+                    if (cashier.isEmpty()) {
+                        System.out.println("Daftar barang kosong. Tambahkan barang terlebih dahulu.");
+                    }else {
+                        System.out.println("----------------------------------");
+                        cashier.displayTotal();
+                        System.out.print("Masukkan jumlah pembayaran: ");
+                        int payment = scanner.nextInt();
+                        cashier.processPayment(payment); 
+                    }
                     break;
                 case 4:
                     System.out.println("Terima kasih telah menggunakan sistem kasir kami!");
